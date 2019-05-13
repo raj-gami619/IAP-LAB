@@ -1,6 +1,7 @@
 <?php
-
+include_once "DBConnector.php";
 include "crud.php";
+
 
 class User implements Crud{
 	private $user_id;
@@ -29,7 +30,9 @@ class User implements Crud{
 		$ln = $this->last_name;
 		$city = $this->city_name;
 		
-		$res = mysql_query("INSERT INTO user(first_name,last_name,user_city) VALUES('$fn','$ln','$city')") or die ("Error: " .mysql_query());
+		$q = "INSERT INTO user(first_name,last_name,user_city) VALUES('$fn','$ln','$city')";
+		$res = mysql_query($q) or die(mysql_error());
+		
 		return $res;
 		}
 		
