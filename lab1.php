@@ -3,9 +3,11 @@
 include_once 'DBConnector.php';
 include_once 'user.php';
 
-$con = new DBConnector;
+
 
 if(isset($_POST['btn-save'])){
+	$conn = mysql_connect("localhost", "root","") or die("Error: " .mysql_error());
+		$db=mysql_select_db("btc3205",$conn);
 	$first_name = $_POST['first_name'];
 	$last_name = $_POST['last_name'];
 	$city = $_POST['city_name'];

@@ -1,13 +1,13 @@
 <?php
-include_once "DBConnector.php";
-include "crud.php";
-
+include_once 'DBConnector.php';
+include 'crud.php';
 
 class User implements Crud{
 	private $user_id;
 	private $first_name;
 	private $last_name;
 	private $city_name;
+	
 	
 	
 	function _construct($first_name, $last_name,$city_name){
@@ -26,6 +26,7 @@ class User implements Crud{
 		
 	
 	public function save(){
+		
 		$fn = $this->first_name;
 		$ln = $this->last_name;
 		$city = $this->city_name;
