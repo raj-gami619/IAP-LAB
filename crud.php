@@ -1,7 +1,5 @@
 <?php
-
-interface Crud{
-	
+interface crud{
 	public function save();
 	public function readAll();
 	public function readUnique();
@@ -9,6 +7,6 @@ interface Crud{
 	public function update();
 	public function removeOne();
 	public function removeAll();
-	}
+}
 
 ?>
