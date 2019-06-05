@@ -10,17 +10,19 @@ class FileUploader{
 					echo "File has been uploaded successfully";
 				} else {
 					echo "File has not been uploaded successfully";
-							}
-			
+						}
+			}
+			else{
+				die('File is not supported');
+			}
 		}
-		}
-		}
-}
+
 //	public function fileAlreadyExists(){}
 //	public function saveFilePathTo(){}
 //	public function moveFile(){}
 //	public function fileTypeIsCorrect(){}
 //	public function fileSizeIsCorrect(){}
 //	public function fileWasSelected(){}
+}
+}
 ?>
-

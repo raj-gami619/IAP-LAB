@@ -9,10 +9,12 @@
             $first_name = $_POST['first_name'];
             $last_name = $_POST['last_name'];
             $city = $_POST['city_name'];
+
             $username = $_POST['username'];
             $password = $_POST['password'];
-			$utc_timestamp = $_POST['utc_timestamp'];
-			$offset = $_POST['time_zone_effect'];
+
+            $utc_timestamp = $_POST['utc_timestamp'];
+            $offset = $_POST['time_zone_offset'];
 
             //Creating a users object
             /*Note the way we create our object using constructor that will be used to initializa your variables */
@@ -58,22 +60,17 @@
         <title>Title goes here</title>
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-        
+        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">-->
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
         <script type="text/javascript" src="validate.js"></script>
         <link rel="stylesheet" type="text/css" href="validate.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script type="text/javascript" src="timezone.js"></script>
-		<script type="text/javascript">
+        <script type="text/javascript">
             function validateForm() {
                 var fn = document.forms["user_details"]["first_name"].value;
                 var ln = document.forms["user_details"]["last_name"].value;
                 var city = document.forms["user_details"]["city_name"].value;
-				var uname = document.forms["user_details"]["username"].value;
-				var pass = document.forms["user_details"]["password"].value;
-				var utc = document.forms["user_details"]["utc_timestamp"].value;
-				
-				var offset = document.forms["user_details"]["time_zone_effect"].value;
 
                 if (fn == null || ln == "" || city == "") {
                     alert("All details are required");
@@ -144,8 +141,10 @@
                                 </div>
 
                                 <button name="btn-save" class="btn btn-primary"><strong>SAVE</strong></button>
-                                <input type="" name="utc_timestamp" id="utc_timestamp" value=""/>
-                                <input type="" name="time_zone_effect" id="time_zone_effect" value=""/>
+
+                                <input type="hidden" name="utc_timestamp" id="utc_timestamp" value=""/>
+
+                                <input type="hidden" name="time_zone_offset" id="time_zone_offset" value=""/>
 
                                 <td><a href="login.php"><strong>LOGIN</strong></a></td>
 

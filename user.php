@@ -12,8 +12,9 @@
 
         private $username;
         private $password;
-		private $utc_timestamp;
-		private $offset;
+
+        private $utc_timestamp;
+        private $offset;
 
         /*We can use this class constructor to initializ our values
         members variables cannot be instantiated from elsewhere; They private */
@@ -25,14 +26,33 @@
 
             $this->username = $username;
             $this->password = $password;
-			//$this->utc_timestamp = $utc_timestamp;
-			//$this->offset = $offset;
+
+            $this->UTC = $utc_timestamp;
+            $this->offset = $offset;
         }
 
         public static function create(){
             $instance = new self();
             return $instance;
         }
+
+        //username getter
+        public function setOffset($offset){
+            $this->offset = $offset;
+        }
+
+        public function getOffset(){
+            return $this->offset;
+        }
+
+        public function setUtc($utc_timestamp){
+            $this->UTC = $utc_timestamp;
+        }
+        //username getter
+        public function getUtc(){
+            return $this->UTC;
+        }
+
         //username setter
         public function setUsername($username){
             $this->username = $username;
@@ -59,21 +79,8 @@
 
         //user_id Getter
         public function getUserId(){
-            return $this->user_id;
+            return $this->$user_id;
         }
-		
-	/*	public function getUtcTime(){
-			return $this->utc_timestamp;
-			}
-		public function setUTCTime($utc_timestamp){
-			return $this->utc_timestamp = $utc_timestamp;
-			}
-		public function getOffset(){
-			return $this->offset;
-			}
-		public function setOffset($offset){
-			return $this->offset = $offset;
-			} */
         /*Because we implemented the 'Crud' interface, we have
         to define all the methods, otherwise we will run into an error */
 
@@ -84,8 +91,8 @@
             $uname = $this->username;
             $this->hashPassword();
             $pass = $this->password;
-			//$utc = $this->utc_timestamp;
-			//$offset = $this->offset;
+            $utc = $this->UTC;
+            $ofset = $this->offset;
             $con = new DBConnector;//Database connection is made
 
             $check = "SELECT * FROM user WHERE username='$uname'";
@@ -95,7 +102,7 @@
              echo "username exists "; 
 
          }else{
-            $res = mysqli_query($con->conn,"INSERT INTO user (first_name,last_name,user_city,username,password) VALUES('$fn','$ln','$city','$uname', '$pass')") or die("Error!". mysqli_error());
+            $res = mysqli_query($con->conn,"INSERT INTO user (first_name,last_name,user_city,username,password,UTC,offset) VALUES('$fn','$ln','$city','$uname', '$pass','$utc','$ofset')") or die("Error!". mysqli_error());
 
             return $res;
         }}
